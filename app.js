@@ -3,19 +3,22 @@
 
 function stopBallIfOutOfBounds() {
   const $ball = $('#ball');
+  const $field = $('#field');
+  const fieldHeight = $field.height();
+  const fieldWidth = $field.width();
+  const { left: fieldLeft } = $field.position();
   const { left, top } = $ball.position();
-  console.log(left, top);
-  if (top < 20) {
+  if (top < 40) {
     $ball.css('top', 0);
   }
-  if (left < 80) {
+  if (left < 80 + fieldLeft) {
     $ball.css('left', 0);
   }
-  if (left > 1180) {
-    $ball.css('left', 1110);
+  if (left > fieldWidth + 80) {
+    $ball.css('left', fieldWidth - 20);
   }
-  if (top > 600) {
-    $ball.css('top', 580);
+  if (top > fieldHeight + 20) {
+    $ball.css('top', fieldHeight - 20);
   }
 }
 
